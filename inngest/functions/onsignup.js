@@ -12,7 +12,7 @@ export const onUserSignup=inngest.createFunction(
         const user = await step.run("get-user-email",async()=>{
             const userOnject= await User.findOne({email})
             if(!userOnject){
-                throw new Error("User not found")
+                
                 throw new NonRetriableError("User not found")
 
             }
