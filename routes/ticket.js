@@ -1,13 +1,13 @@
 import express from "express";
 import { login, logout, signUp, updateUser } from "../controllers/user.js";
 import { authenticate } from "../middleware/auth.js";
+import { createTicket, getTicketById, getTickets } from "../controllers/ticket.js";
 
 const router = express.Router();
-router.post('/signup', signUp)
-router.post('/login', login);
-router.post('/logout',logout)
-router.post('/update-user',authenticate,updateUser);
-router.get('/users', authenticate, updateUser);
+router.get('/',authenticate,getTickets)
+router.get('/:id',authenticate,getTicketById)
+router.post('/',authenticate,createTicket)
+
 
 
 export default router;
